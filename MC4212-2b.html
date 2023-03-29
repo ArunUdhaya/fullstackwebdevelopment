@@ -1,0 +1,40 @@
+//Fetching JSON data and displaying in an HTML table
+<html>
+<head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <table class="table table-bordered">
+   <tbody id="data">
+   </tbody>
+</table>   
+
+<script>
+
+  getData();
+
+  async function getData(){
+       const response= await fetch('E://KVCET//DEPT OF MCA//SEM-III//FullStackWebDevelopment//FSWD Experiments//test.json’)
+       console.log(response);
+       const data= await response.json();
+       console.log(data);
+       length=data.drinks.length;
+       console.log(data);
+       var temp="";
+       for(i=0;i<length;i++)
+       {
+          temp+="<tr>";
+          temp+="<td>"+data.drinks[i].strDrink+"</td>";
+          temp+="<td>"+data.drinks[i].strInstructions+"</td>";
+       }
+
+    document.getElementById("data").innerHTML=temp;
+     }
+
+</script>
+</body>
+</html>

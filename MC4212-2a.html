@@ -1,0 +1,22 @@
+//GET REQUEST USING FETCH() METHOD
+<html>
+<head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+</head>
+<body>
+<img src="" id="flower" width=400 height=400/>
+<script>
+  console.log("about to fetch a flower");
+
+  GetImage().catch(error => {
+      console.error(error);
+      });
+
+  async function GetImage(){
+       const response = await fetch('/anim.jpg');
+       const blob = await response.blob();
+       document.getElementById('flower').src=URL.createObjectURL(blob);
+       }
+</script>
+</body>
+</html>
